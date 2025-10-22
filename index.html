@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Virtual Bookshelf</title>
+    <title>Virtual Bookshelf 3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>My Virtual Bookshelf</h1>
-        
-        <div class="controls">
-            <input type="text" id="bookTitle" placeholder="Book Title" />
-            <input type="text" id="bookAuthor" placeholder="Author" />
-            <input type="color" id="bookColor" value="#3498db" />
-            <button id="addBook">Add Book</button>
-        </div>
+    <div id="container"></div>
+    
+    <!-- Book Details Overlay (shown when hovering/clicking a book) -->
+    <div id="bookInfo" class="book-info-panel">
+        <h2 id="bookTitle"></h2>
+        <p id="bookAuthor"></p>
+        <p id="bookDescription"></p>
+    </div>
 
-        <div id="canvas-container"></div>
-
-        <div class="book-list">
-            <h2>My Books</h2>
-            <ul id="booksList"></ul>
-        </div>
+    <!-- Instructions -->
+    <div id="instructions">
+        <p>🖱️ Drag to rotate • Scroll to zoom • Click a book to view details</p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
