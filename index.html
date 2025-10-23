@@ -3,27 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Bookshelf 3D</title>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>3D Virtual Bookshelf</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background: #000;
+        }
+
+        #canvas-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            max-width: 300px;
+            z-index: 1;
+        }
+
+        #info h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        #book-info {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            display: none;
+            z-index: 1;
+            text-align: center;
+            min-width: 300px;
+        }
+
+        #book-info h3 {
+            margin-bottom: 5px;
+            color: #4CAF50;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
-    <div id="container"></div>
-    
-    <!-- Book Details Overlay (shown when hovering/clicking a book) -->
-    <div id="bookInfo" class="book-info-panel">
-        <h2 id="bookTitle"></h2>
-        <p id="bookAuthor"></p>
-        <p id="bookDescription"></p>
+    <div id="canvas-container">
+        <div class="loading">Loading 3D Bookshelf...</div>
+        <div id="info">
+            <h2>3D Virtual Bookshelf</h2>
+            <p>🖱️ Drag to rotate view</p>
+            <p>📖 Click on books to view them</p>
+            <p>🔍 Scroll to zoom in/out</p>
+        </div>
+        <div id="book-info"></div>
     </div>
 
-    <!-- Instructions -->
-    <div id="instructions">
-        <p>🖱️ Drag to rotate • Scroll to zoom • Click a book to view details</p>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <script src="app.js"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
